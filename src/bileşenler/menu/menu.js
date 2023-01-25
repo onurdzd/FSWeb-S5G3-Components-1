@@ -1,13 +1,13 @@
-import './Menu.less'
+import "./Menu.less";
 
 // Kullanacağımız veri bu, üzerinde çalışın ama henüz hiçbir şeyi değiştirmeyin.
 let menuElemanlari = [
-  'Gündem',
-  'Dünya',
+  "Gündem",
+  "Dünya",
   "Ekonomi",
-  'Yazarlar',
-  'Burç Yorumları',
-  'Diğer'
+  "Yazarlar",
+  "Burç Yorumları",
+  "Diğer",
 ];
 
 /*
@@ -34,3 +34,45 @@ let menuElemanlari = [
 
   Adım 6: 'menuYapici' fonksiyonunu ve 'menuElemanlari' dizisini kullanarak menüyü oluşturun, ve döndürülen menüyü header'e ekleyin.
 */
+
+// const menuYapici = (arr) => {
+//   return `
+//   <div class="menu">
+//   <ul>
+//     <li>${arr}</li>
+//   </ul>
+//   </div>`;
+// };
+
+// menuElemanlari.forEach((item) =>
+//   document
+//     .querySelector(".header")
+//     .insertAdjacentHTML("beforeend", menuYapici(item))
+// );
+
+// document.querySelector(".menu-button").addEventListener("click", () => {
+//   document.querySelectorAll(".menu").forEach((item) => {
+//     item.classList.toggle("menu--open");
+//   });
+// });
+
+const menuYapici2 = (arr) => {
+  const menuEl = document.createElement("div");
+  menuEl.classList.add("menu");
+  const ulEl = document.createElement("ul");
+  const liEl = document.createElement("li");
+  ulEl.appendChild(liEl);
+  menuEl.appendChild(ulEl);
+
+  liEl.textContent = arr;
+
+  document.querySelector(".header").appendChild(menuEl);
+
+  document.querySelector(".menu-button").addEventListener("click", () => {
+    menuEl.classList.toggle("menu--open");
+  });
+};
+
+menuElemanlari.forEach((item) => {
+  menuYapici2(item);
+});
